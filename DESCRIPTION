@@ -1,11 +1,22 @@
 Package: ZHAWTools4R
 Type: Package
-Title: What the Package Does (Title Case)
+Title: ZHAWTools4R - Swiss army knife for R
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Vanessa Klaas
+Maintainer: Vanessa Klaas <klav@zhaw.ch>
+Description: Swiss army knife for R
+    Diversity of useful functions.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+Depends: R (>= 3.1.0)
+Imports:
+  readxl,
+  dplyr,
+  magrittr,
+  stringr
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 7.1.1
