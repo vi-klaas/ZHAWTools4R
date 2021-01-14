@@ -14,7 +14,7 @@ rename_cols(lookup_table, key = "key", raw = "raw")
 \item{raw}{name of raw column}
 }
 \value{
-
+lookup table with renamed columns
 }
 \description{
 rename_cols

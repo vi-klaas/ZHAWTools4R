@@ -4,17 +4,17 @@
 \alias{create_lookup_vector}
 \title{create_lookup_vector}
 \usage{
-create_lookup_vector(lookup_table, key = "key", raw = "raw")
+create_lookup_vector(lookup_table, pattern = "raw", replacement = "key")
 }
 \arguments{
 \item{lookup_table}{a lookup table}
 
-\item{key}{name of key column}
+\item{pattern}{name of raw/pattern column}
 
-\item{raw}{name of raw column}
+\item{replacement}{name of key/replacement column}
 }
 \value{
-
+named vector to use with str_replace_all
 }
 \description{
 create_lookup_vector

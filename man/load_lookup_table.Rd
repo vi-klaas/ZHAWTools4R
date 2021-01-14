@@ -15,3 +15,6 @@ tibble
 \description{
 load_lookup_table
 }
+\examples{
+# some examples if you want to highlight the usage in the package
+}

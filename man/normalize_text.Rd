@@ -4,19 +4,19 @@
 \alias{normalize_text}
 \title{normalize_text}
 \usage{
-normalize_text(x, lookup_table, key = "key", raw = "raw")
+normalize_text(x, lookup_table, pattern = "raw", replacement = "key")
 }
 \arguments{
 \item{x}{a vector of values}
 
 \item{lookup_table}{a lookup table}
 
-\item{key}{name of key column}
+\item{pattern}{name of raw/pattern column}
 
-\item{raw}{name of raw column}
+\item{replacement}{name of key/replacement column}
 }
 \value{
-
+vector of normalized text values
 }
 \description{
 normalize_text
