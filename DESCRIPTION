@@ -6,7 +6,7 @@ Author: Vanessa Klaas
 Maintainer: Vanessa Klaas <klav@zhaw.ch>
 Description: Swiss army knife for R
     Diversity of useful functions.
-License: What license is it under?
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.1.0)
@@ -14,9 +14,13 @@ Imports:
   readxl,
   dplyr,
   magrittr,
-  stringr
+  stringr,
+  rlang
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0),
+    covr
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1
+Config/testthat/edition: 3

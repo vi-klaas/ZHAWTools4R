@@ -53,7 +53,9 @@ lookup_table2 <- tribble(
 
 ```{r}
 normalize_text(test_data$raw_values, lookup_table)
+
+
 ```
 ```{r}
-normalize_text(test_data$raw_values, lookup_table2, key="key1", raw="raw1")
+normalize_text(test_data$raw_values, lookup_table2, replacement="key1", pattern="raw1")
 ```

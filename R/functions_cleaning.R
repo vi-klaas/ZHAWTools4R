@@ -22,7 +22,7 @@ NULL
 #' @param key name of key column
 #' @param raw name of raw column
 #'
-#' @return
+#' @return lookup table with renamed columns
 #' @export
 #'
 #' @examples
@@ -37,37 +37,56 @@ rename_cols <- function(lookup_table, key="key", raw="raw") {
 #' create_lookup_vector
 #'
 #' @param lookup_table a lookup table
-#' @param key name of key column
-#' @param raw name of raw column
+#' @param pattern name of raw/pattern column
+#' @param replacement name of key/replacement column
 #'
-#' @return
+#' @return named vector to use with str_replace_all
 #'
 #'
 #' @import stats
 #' @import dplyr
 #' @import stringr
+#' @importFrom rlang .data
 #'
 #' @export
 #'
 #' @examples
 #' # some examples if you want to highlight the usage in the package
-create_lookup_vector <- function(lookup_table, key="key", raw="raw") {
+create_lookup_vector <- function(lookup_table, pattern="raw", replacement="key") {
   res <- lookup_table %>%
-    rename_cols(key, raw) %>%
-    dplyr::arrange(-stringr::str_length(raw))
-  res <- stats::setNames(res %>% dplyr::pull(key), res %>% dplyr::pull(raw))
+    rename_cols(key=replacement, raw=pattern) %>%
+    dplyr::arrange(-stringr::str_length(.data$raw))
+  res <- stats::setNames(res %>% dplyr::pull(.data$key), res %>% dplyr::pull(.data$raw))
   return(res)
 }
 
+#' normalize_blanks_tolower
+#'
+#' @param x string or vector of strings
+#'
+#' @return normalized string or vector of normalized strings
+#'
+#' @import stringr
+#' @export
+#'
+#' @examples
+#' # some examples if you want to highlight the usage in the package
+normalize_blanks_tolower <- function(x) {
+  res <- x %>%
+    stringr::str_to_lower() %>%
+    stringr::str_trim() %>%
+    stringr::str_replace_all("\\s+", " ")
+  return(res)
+}
 
 #' normalize_text
 #'
 #' @param x a vector of values
 #' @param lookup_table a lookup table
-#' @param key name of key column
-#' @param raw name of raw column
+#' @param pattern name of raw/pattern column
+#' @param replacement name of key/replacement column
 #'
-#' @return
+#' @return vector of normalized text values
 #'
 #' @import dplyr
 #' @import stringr
@@ -75,12 +94,10 @@ create_lookup_vector <- function(lookup_table, key="key", raw="raw") {
 #'
 #' @examples
 #' # some examples if you want to highlight the usage in the package
-normalize_text <- function(x, lookup_table, key="key", raw="raw") {
-  lookup_vector <- create_lookup_vector(lookup_table, key, raw)
+normalize_text <- function(x, lookup_table, pattern="raw", replacement="key") {
+  lookup_vector <- create_lookup_vector(lookup_table, pattern=pattern, replacement=replacement)
   res <- x %>%
-    stringr::str_to_lower() %>%
-    stringr::str_trim() %>%
-    stringr::str_replace_all("\\s+", " ")  %>%
+    normalize_blanks_tolower() %>%
     stringr::str_replace_all(lookup_vector)
   return(res)
 }
