@@ -2,9 +2,11 @@
 % Please edit documentation in R/functions_cleaning.R
 \name{rename_cols}
 \alias{rename_cols}
-\title{rename_cols}
+\title{title: functions_cleaning.R
+author: Vanessa Klaas
+date: 2021-01-13}
 \usage{
-rename_cols(lookup_table, key = "key", raw = "raw")
+rename_cols(lookup_table, pattern = "key", replacement = "raw")
 }
 \arguments{
 \item{lookup_table}{a lookup table}
@@ -17,6 +19,7 @@ rename_cols(lookup_table, key = "key", raw = "raw")
 lookup table with renamed columns
 }
 \description{
+clean, normalize, and unify strings
 rename_cols
 }
 \examples{
