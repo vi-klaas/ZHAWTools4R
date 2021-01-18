@@ -1,21 +1,14 @@
-#   Install Package:           'Cmd + Shift + B'
-#   Check Package:             'Cmd + Shift + E'
-#   Test Package:              'Cmd + Shift + T'
-
-
-#' Pipe
+## ******************************************************************************
+#' title: functions_cleaning.R
+#' author: Vanessa Klaas
+#' date: 2021-01-13
 #'
-#' Put description here
-#'
-#' @importFrom magrittr %>%
-#' @name %>%
-#' @rdname pipe
-#' @export
-#' @param lhs,rhs specify what lhs and rhs are
-#' @examples
-#' # some examples if you want to highlight the usage in the package
-NULL
+#' clean, normalize, and unify strings
+## ******************************************************************************
 
+
+
+## ******************************************************************************
 #' rename_cols
 #'
 #' @param lookup_table a lookup table
@@ -27,13 +20,14 @@ NULL
 #'
 #' @examples
 #' # some examples if you want to highlight the usage in the package
-rename_cols <- function(lookup_table, key="key", raw="raw") {
-  names(lookup_table)[names(lookup_table)==key] <- "key"
-  names(lookup_table)[names(lookup_table)==raw] <- "raw"
+rename_cols <- function(lookup_table, pattern="key", replacement="raw") {
+  names(lookup_table)[names(lookup_table)==pattern] <- "pattern"
+  names(lookup_table)[names(lookup_table)==replacement] <- "replacement"
   return(lookup_table)
 }
 
 
+## ******************************************************************************
 #' create_lookup_vector
 #'
 #' @param lookup_table a lookup table
@@ -52,14 +46,16 @@ rename_cols <- function(lookup_table, key="key", raw="raw") {
 #'
 #' @examples
 #' # some examples if you want to highlight the usage in the package
-create_lookup_vector <- function(lookup_table, pattern="raw", replacement="key") {
+create_lookup_vector <- function(lookup_table, pattern="pat", replacement="rep") {
   res <- lookup_table %>%
-    rename_cols(key=replacement, raw=pattern) %>%
-    dplyr::arrange(-stringr::str_length(.data$raw))
-  res <- stats::setNames(res %>% dplyr::pull(.data$key), res %>% dplyr::pull(.data$raw))
+    rename_cols(replacement=replacement, pattern=pattern) %>%
+    dplyr::arrange(-stringr::str_length(.data$pattern))
+  res <- stats::setNames(res %>% dplyr::pull(.data$replacement), res %>% dplyr::pull(.data$pattern))
   return(res)
 }
 
+
+## ******************************************************************************
 #' normalize_blanks_tolower
 #'
 #' @param x string or vector of strings
@@ -79,6 +75,8 @@ normalize_blanks_tolower <- function(x) {
   return(res)
 }
 
+
+## ******************************************************************************
 #' normalize_text
 #'
 #' @param x a vector of values
@@ -88,7 +86,6 @@ normalize_blanks_tolower <- function(x) {
 #'
 #' @return vector of normalized text values
 #'
-#' @import dplyr
 #' @import stringr
 #' @export
 #'

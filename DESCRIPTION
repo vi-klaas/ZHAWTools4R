@@ -15,7 +15,11 @@ Imports:
   dplyr,
   magrittr,
   stringr,
-  rlang
+  rlang,
+  extrafont,
+  ggplot2,
+  gridExtra,
+  tidyverse
 Suggests: 
     knitr,
     rmarkdown,

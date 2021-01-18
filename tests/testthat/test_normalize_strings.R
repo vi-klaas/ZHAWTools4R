@@ -1,10 +1,15 @@
-#context("normalize strings")
-library(ZHAWTools4R)
-# library(dplyr)
+## ******************************************************************************
+#' title: test_normalize_strings.R
+#' author: Vanessa Klaas
+#' date: 2021-01-14
+#'
+#' test cases for normalizing strings
+## ******************************************************************************
+
 
 testthat::test_that("prepare lookup vector", {
   input <- tribble(
-    ~raw, ~key,
+    ~pattern, ~replacement,
     "bundesamt für statistik", "bsf",
     "bsf", "bsf",
     "bevölkerung des bundesamt für statistik", "bsf.bv",

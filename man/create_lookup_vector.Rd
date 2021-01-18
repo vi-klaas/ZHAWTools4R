@@ -4,7 +4,7 @@
 \alias{create_lookup_vector}
 \title{create_lookup_vector}
 \usage{
-create_lookup_vector(lookup_table, pattern = "raw", replacement = "key")
+create_lookup_vector(lookup_table, pattern = "pat", replacement = "rep")
 }
 \arguments{
 \item{lookup_table}{a lookup table}

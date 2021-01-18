@@ -1,8 +1,8 @@
 ---
-title: "normalize_text"
+title: "relabel_for_plots"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{normalize_text}
+  %\VignetteIndexEntry{relabel_for_plots}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(ZHAWTools4R)
-library(dplyr)
+library(tidyverse)
 ```
 Example Data
 
@@ -37,26 +37,27 @@ lookup_table <- tribble(
   "sake", "sake"
 ) 
 
-
-
-lookup_table2 <- tribble(
-  ~raw1, ~key1,
-  "bundesamt für statistik", "bsf",
-  "bsf", "bsf",
-  "bevölkerung des bundesamt für statistik", "bsf.bv",
-  "sake", "sake"
-) 
+lookup_labels <- tribble(
+  ~key, ~label,
+  "bsf", "Bundesamt für Statistik",
+  "bsf.bv", "Bevölkerungsstatistik des Bundesamt für Statistik",
+  "sake", "SAKE"
+)
 
 ```
 
 
 
 ```{r}
-normalize_text(test_data$raw_values, lookup_table)
-
-
+test_data <-  test_data %>%
+  mutate(key = normalize_text(raw_values, lookup_table, pattern="raw", replacement="key"))
+         
+test_data
 ```
 
 ```{r}
-normalize_text(test_data$raw_values, lookup_table2, replacement="key1", pattern="raw1")
+test_data <- test_data %>%
+  mutate(label = relabel_values(key, lookup_labels, pattern = "key", replacement = "label"))
+
+test_data
 ```
