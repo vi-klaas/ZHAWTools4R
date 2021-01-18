@@ -12,8 +12,8 @@
 #' rename_cols
 #'
 #' @param lookup_table a lookup table
-#' @param key name of key column
-#' @param raw name of raw column
+#' @param pattern name of key column
+#' @param replacement name of raw column
 #'
 #' @return lookup table with renamed columns
 #' @export

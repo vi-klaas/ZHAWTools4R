@@ -11,9 +11,9 @@ rename_cols(lookup_table, pattern = "key", replacement = "raw")
 \arguments{
 \item{lookup_table}{a lookup table}
 
-\item{key}{name of key column}
+\item{pattern}{name of key column}
 
-\item{raw}{name of raw column}
+\item{replacement}{name of raw column}
 }
 \value{
 lookup table with renamed columns
