@@ -1,0 +1,42 @@
+---
+title: "create columns and rows based on values"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{create columns and rows based on value}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup}
+library(ZHAWTools4R)
+library(dplyr)
+```
+Example Data
+
+```{r}
+df <- tribble(
+  ~col1, ~col2,
+  1, "a, b, c",
+  2, "f, f",
+  3, "g,",
+  4, "f",
+  5, ",h",
+  6, "",
+  7, "i"
+)
+
+sep <- ","
+cname <- "col2"
+cname_new <- "col2_new"
+
+```
+
+Create multiple Rows
+```{r}
+valueslist2rows(df, cname) %>% write.csv2(row.names=F)
+```
+
+```{r}
+valueslist2rows(df, cname)
+```
+

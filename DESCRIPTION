@@ -19,6 +19,7 @@ Imports:
   extrafont,
   ggplot2,
   gridExtra,
+  tidyr,
   tidyverse
 Suggests: 
     knitr,
