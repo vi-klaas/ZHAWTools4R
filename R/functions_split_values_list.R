@@ -39,10 +39,10 @@ valueslist2rows <- function(df, cname, sep = ",",
   # add helper columns with the number of columns that shall be added
   df <- df %>%
     dplyr::mutate(
-      aux_no_elements = stringr::str_count(.data[[cname]], sep),
+      aux_no_elements = stringr::str_count(.data[[cname]], fixed(sep))+1,
       aux_original_empty = .data[[cname]] == ""
     ) %>%
-    tidyr::uncount(.data$aux_no_elements+1)
+    tidyr::uncount(.data$aux_no_elements)
   df[[cname_new]] <- values
 
   if (dont_create_empty_fields){
