@@ -5,32 +5,44 @@
 \title{save Plot}
 \usage{
 SavePlot(
-  prefix,
-  camid,
   g,
   size,
+  prefix,
+  middle,
+  postfix,
+  sep = "_",
   rootdir = "plots/",
   suffix = "png",
-  postfix = "",
-  dpi = 300
+  dpi = 300,
+  width = NULL,
+  height = NULL,
+  units = "cm"
 )
 }
 \arguments{
-\item{prefix}{prefix of filename}
-
-\item{camid}{campaign ID}
-
 \item{g}{the ggplot object to save}
 
 \item{size}{the plot size, possible options are: a4', 'a4.hor', 'a4.hor.half', 'col.1' and more}
 
-\item{rootdir}{the directory in which the file shall be saved, default plots/}
+\item{prefix}{a prefix}
 
-\item{suffix}{file extensions / format}
+\item{middle}{middle}
 
-\item{postfix}{string inserted after the camid, default png}
+\item{postfix}{postfix}
+
+\item{sep}{separator}
+
+\item{rootdir}{root directory for plots}
+
+\item{suffix}{file extension}
 
 \item{dpi}{resolution, default=300}
+
+\item{width}{custom width}
+
+\item{height}{custom height}
+
+\item{units}{custom unit}
 }
 \value{
 None

@@ -6,18 +6,27 @@
 author: Vanessa Klaas
 date: 2021-01-19}
 \usage{
-PlotFileName(prefix, camid, rootdir = "plots/", suffix = "png", postfix = "")
+PlotFileName(
+  prefix,
+  middle,
+  postfix,
+  sep = "_",
+  rootdir = "plots/",
+  suffix = "png"
+)
 }
 \arguments{
 \item{prefix}{a prefix}
 
-\item{camid}{campaign id}
+\item{middle}{middle}
+
+\item{postfix}{postfix}
+
+\item{sep}{separator}
 
 \item{rootdir}{root directory for plots}
 
 \item{suffix}{file extension}
-
-\item{postfix}{postfix for filename}
 }
 \value{
 filename with complete path

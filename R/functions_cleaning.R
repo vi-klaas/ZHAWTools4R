@@ -33,9 +33,9 @@ rename_cols <- function(lookup_table, pattern="key", replacement="raw") {
 #' @param lookup_table a lookup table
 #' @param pattern name of raw/pattern column
 #' @param replacement name of key/replacement column
+#' @param arrange_by_size if TRUE, sort the vector be length of strings (necessary for string normalization, but not for factor levels)
 #'
 #' @return named vector to use with str_replace_all
-#'
 #'
 #' @import stats
 #' @import dplyr
@@ -46,11 +46,15 @@ rename_cols <- function(lookup_table, pattern="key", replacement="raw") {
 #'
 #' @examples
 #' # some examples if you want to highlight the usage in the package
-create_lookup_vector <- function(lookup_table, pattern="pat", replacement="rep") {
-  res <- lookup_table %>%
-    rename_cols(replacement=replacement, pattern=pattern) %>%
-    dplyr::arrange(-stringr::str_length(.data$pattern))
-  res <- stats::setNames(res %>% dplyr::pull(.data$replacement), res %>% dplyr::pull(.data$pattern))
+create_lookup_vector <- function (lookup_table, pattern = "pat", replacement = "rep", arrange_by_size=TRUE)
+{
+  res <- lookup_table %>% rename_cols(replacement = replacement, pattern = pattern)
+  if (arrange_by_size){
+    res <- res %>% dplyr::arrange(-stringr::str_length(.data$pattern))
+  }
+
+  res <- stats::setNames(res %>% dplyr::pull(.data$replacement),
+                         res %>% dplyr::pull(.data$pattern))
   return(res)
 }
 

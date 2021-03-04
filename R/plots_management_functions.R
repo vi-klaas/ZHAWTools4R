@@ -47,8 +47,8 @@ SavePlot <- function(g, size, prefix, middle, postfix, sep="_", rootdir="plots/"
 
   switch(size,
          'ppt.lan'= {ggplot2::ggsave(fname, g, dpi=dpi, width=13, height=6.5, units="in", device=suffix)},
-         'doc.por'= {ggplot2::ggsave(fname, g, dpi=dpi, width=16, height=10, units="in", device=suffix)},
-         'doc.por.half'= {ggplot2::ggsave(fname, g, dpi=dpi, width=16, height=10, units="in", device=suffix)},
+         'doc.por'= {ggplot2::ggsave(fname, g, dpi=dpi, width=16, height=10, units="cm", device=suffix)},
+         'doc.por.half'= {ggplot2::ggsave(fname, g, dpi=dpi, width=8, height=5, units="cm", device=suffix)},
          'a4'= {ggplot2::ggsave(fname, g, dpi=dpi, width=19, height=28, units="cm", device=suffix)},
          'a4.lan'= {ggplot2::ggsave(fname, g, dpi=dpi, width=28, height=19, units="cm", device=suffix)},
          'a4.lan.half'= {ggplot2::ggsave(fname, g, dpi=dpi, width=16, height=18, units="cm", device=suffix)},

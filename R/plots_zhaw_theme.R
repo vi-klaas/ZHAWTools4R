@@ -40,7 +40,7 @@ mycolors <-
 #'
 #' @description
 #' usage: theme(axis.text.x = kXLab.long) +
-kXLab.long <- ggplot2::element_text(angle=45, hjust=1.1, vjust=1.1)
+kXLab.long <- ggplot2::element_text(angle=45, hjust=1.1, vjust=1)
 
 
 ## ******************************************************************************

@@ -4,7 +4,12 @@
 \alias{create_lookup_vector}
 \title{create_lookup_vector}
 \usage{
-create_lookup_vector(lookup_table, pattern = "pat", replacement = "rep")
+create_lookup_vector(
+  lookup_table,
+  pattern = "pat",
+  replacement = "rep",
+  arrange_by_size = TRUE
+)
 }
 \arguments{
 \item{lookup_table}{a lookup table}
@@ -12,6 +17,8 @@ create_lookup_vector(lookup_table, pattern = "pat", replacement = "rep")
 \item{pattern}{name of raw/pattern column}
 
 \item{replacement}{name of key/replacement column}
+
+\item{arrange_by_size}{if TRUE, sort the vector be length of strings (necessary for string normalization, but not for factor levels)}
 }
 \value{
 named vector to use with str_replace_all
